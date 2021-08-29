@@ -1,0 +1,24 @@
+overwrite: true
+schema: 'graphql/type/**/*.graphql'
+documents: 'graphql/documents/**/*.graphql'
+config:
+  useTypeImports: true
+  defaultScalarType: unknown
+  strictScalars: true
+  withHooks: false
+generates:
+  src/generated/client.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'urql-svelte-operations-store'
+      - 'typescript-urql'
+      - 'urql-introspection'
+      - 'src/typescript-typedefs.cjs'
+  src/generated/resolvers.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-resolvers'
+  ./graphql.schema.json:
+    plugins:
+      - 'introspection'

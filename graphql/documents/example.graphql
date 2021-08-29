@@ -1,0 +1,5 @@
+query ex($id: Int!) {
+	hero(id: $id) {
+		hello
+	}
+}

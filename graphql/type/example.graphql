@@ -1,0 +1,7 @@
+type Example {
+	hello: String
+}
+
+type Query {
+	hero(id: Int!): Example
+}
