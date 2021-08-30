@@ -19,7 +19,7 @@ export type Example = {
 
 export type Query = {
   __typename?: 'Query';
-  hero?: Maybe<Example>;
+  hero: Example;
 };
 
 
@@ -32,7 +32,7 @@ export type ExQueryVariables = Exact<{
 }>;
 
 
-export type ExQuery = { __typename?: 'Query', hero?: Maybe<{ __typename?: 'Example', hello?: Maybe<string> }> };
+export type ExQuery = { __typename?: 'Query', hero: { __typename?: 'Example', hello?: Maybe<string> } };
 
 
 export const ExDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ex"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hero"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"hello"}}]}}]}}]} as unknown as DocumentNode<ExQuery, ExQueryVariables>;

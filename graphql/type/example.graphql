@@ -3,5 +3,5 @@ type Example {
 }
 
 type Query {
-	hero(id: Int!): Example
+	hero(id: Int!): Example!
 }

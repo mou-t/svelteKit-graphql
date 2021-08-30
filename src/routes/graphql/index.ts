@@ -5,9 +5,9 @@ import {
 	processRequest
 } from 'graphql-helix';
 import type { RequestHandler } from '@sveltejs/kit';
-import { typeDefs } from 'src/generated/resolvers';
+import { typeDefs } from '../../generated/resolvers';
 import { resolvers } from '$lib/resolvers';
-import { makeExecutableSchema } from 'graphql-tools';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 
 const schema = makeExecutableSchema({
 	typeDefs,

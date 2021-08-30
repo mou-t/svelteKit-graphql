@@ -1,25 +1,17 @@
-<script lang="ts" context="module">
-	import type { Load } from '@sveltejs/kit';
-	import { ExDocument } from '../generated/client';
-	import { createClient } from '@urql/core';
-
-	const client = createClient({
-		url: 'http://localhost:3000/graphql'
-	});
-	export const load: Load = async () => {
-		const res = await client.query(ExDocument, { id: 111 }).toPromise();
-
-		return {
-			props: {
-				res: res.data?.hero?.hello
-			}
-		};
-	};
-</script>
-
 <script lang="ts">
-	export let res: string;
+	import { operationStore, query } from '@urql/svelte';
+	import { ExDocument } from '../generated/client';
+
+	const ex = operationStore(ExDocument, { id: 11 });
+	query(ex);
 </script>
 
-<h1>{res}</h1>
+{#if $ex.fetching}
+	<p>loading</p>
+{:else if $ex.error}
+	<p>{$ex.error.message}</p>
+{:else}
+	<h1>{$ex.data?.hero.hello}</h1>
+{/if}
+<h1>hello world</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>

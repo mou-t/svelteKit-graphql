@@ -22,7 +22,7 @@ export type Example = {
 
 export type Query = {
   __typename?: 'Query';
-  hero?: Maybe<Example>;
+  hero: Example;
 };
 
 
@@ -121,7 +121,7 @@ export type ExampleResolvers<ContextType = any, ParentType extends ResolversPare
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  hero?: Resolver<Maybe<ResolversTypes['Example']>, ParentType, ContextType, RequireFields<QueryHeroArgs, 'id'>>;
+  hero?: Resolver<ResolversTypes['Example'], ParentType, ContextType, RequireFields<QueryHeroArgs, 'id'>>;
 };
 
 export type Resolvers<ContextType = any> = {
@@ -132,4 +132,4 @@ export type Resolvers<ContextType = any> = {
 
 
   import gql from 'graphql-tag';
-  export const typeDefs = gql`schema{query:Query}type Example{hello:String}type Query{hero(id:Int!):Example}`;
+  export const typeDefs = gql`schema{query:Query}type Example{hello:String}type Query{hero(id:Int!):Example!}`;
