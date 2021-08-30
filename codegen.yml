@@ -11,14 +11,16 @@ generates:
     plugins:
       - 'typescript'
       - 'typescript-operations'
-      - 'urql-svelte-operations-store'
-      - 'typescript-urql'
-      - 'urql-introspection'
-      - 'src/typescript-typedefs.cjs'
+      - 'typed-document-node'
   src/generated/resolvers.ts:
     plugins:
+      - add:
+          content:
+            - '/* eslint-disable */'
+            - '// typescript-resolversが生成する{} が @typescript-eslint/ban-typesでエラーになるため'
       - 'typescript'
       - 'typescript-resolvers'
+      - 'src/typescript-typedefs.cjs'
   ./graphql.schema.json:
     plugins:
       - 'introspection'

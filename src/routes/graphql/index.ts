@@ -5,7 +5,7 @@ import {
 	processRequest
 } from 'graphql-helix';
 import type { RequestHandler } from '@sveltejs/kit';
-import { typeDefs } from '../../generated/client';
+import { typeDefs } from 'src/generated/resolvers';
 import { resolvers } from '$lib/resolvers';
 import { makeExecutableSchema } from 'graphql-tools';
 

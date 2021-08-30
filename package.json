@@ -12,15 +12,13 @@
     "generate": "graphql-codegen --config codegen.yml"
   },
   "devDependencies": {
+    "@graphql-codegen/add": "^3.1.0",
     "@graphql-codegen/cli": "2.1.1",
     "@graphql-codegen/introspection": "2.1.0",
     "@graphql-codegen/typed-document-node": "^2.1.2",
     "@graphql-codegen/typescript": "2.1.2",
     "@graphql-codegen/typescript-operations": "2.1.2",
     "@graphql-codegen/typescript-resolvers": "2.1.2",
-    "@graphql-codegen/typescript-urql": "^3.1.2",
-    "@graphql-codegen/urql-introspection": "^2.1.0",
-    "@graphql-codegen/urql-svelte-operations-store": "^1.1.2",
     "@sveltejs/adapter-vercel": "^1.0.0-next.27",
     "@sveltejs/kit": "next",
     "@typescript-eslint/eslint-plugin": "^4.19.0",

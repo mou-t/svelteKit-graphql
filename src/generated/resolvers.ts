@@ -1,3 +1,5 @@
+/* eslint-disable */
+// typescript-resolversが生成する{} が @typescript-eslint/ban-typesでエラーになるため
 import type { GraphQLResolveInfo } from 'graphql';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -127,3 +129,7 @@ export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
 };
 
+
+
+  import gql from 'graphql-tag';
+  export const typeDefs = gql`schema{query:Query}type Example{hello:String}type Query{hero(id:Int!):Example}`;

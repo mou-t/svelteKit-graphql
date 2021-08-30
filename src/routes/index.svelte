@@ -1,6 +1,5 @@
 <script lang="ts" context="module">
 	import type { Load } from '@sveltejs/kit';
-	import type { ExQuery, ExQueryVariables } from '../generated/client';
 	import { ExDocument } from '../generated/client';
 	import { createClient } from '@urql/core';
 
@@ -8,9 +7,7 @@
 		url: 'http://localhost:3000/graphql'
 	});
 	export const load: Load = async () => {
-		const res = await client
-			.query<ExQuery, ExQueryVariables>(ExDocument, { id: 111 })
-			.toPromise();
+		const res = await client.query(ExDocument, { id: 111 }).toPromise();
 
 		return {
 			props: {
