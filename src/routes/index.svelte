@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { operationStore, query } from '@urql/svelte';
 	import { ExDocument } from '../generated/client';
+	import { graphqlClient } from '$lib/utils/graphqlClient';
 
-	const ex = operationStore(ExDocument, { id: 11 });
-	query(ex);
+	const client = graphqlClient();
+
+	const ex = client.query(ExDocument, { id: 111 }).toPromise();
 </script>
 
-{#if $ex.fetching}
+{#await ex}
 	<p>loading</p>
-{:else if $ex.error}
-	<p>{$ex.error.message}</p>
-{:else}
-	<h1>{$ex.data?.hero.hello}</h1>
-{/if}
+{:then { data, operation, extensions }}
+	<p>{data?.hero.hello}</p>
+{/await}
+
 <h1>hello world</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
