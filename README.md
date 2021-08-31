@@ -13,3 +13,5 @@ graphql の素振り
 ## @urql/svelte について
 
 https://github.com/FormidableLabs/urql/issues/1819
+
+getContext は components の初期化時にしか使えないため、現状の仕様だとほぼ使えない。
