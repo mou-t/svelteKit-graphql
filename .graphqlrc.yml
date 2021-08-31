@@ -1,0 +1,9 @@
+# Vscode拡張機能用
+# https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql
+
+schema: 'graphql/type/**/*.graphql'
+documents: 'graphql/documents/**/*.graphql'
+extensions:
+  endpoints:
+    default:
+      url: http://localhost:3000/graphql

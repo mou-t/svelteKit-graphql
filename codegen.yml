@@ -5,7 +5,6 @@ config:
   useTypeImports: true
   defaultScalarType: unknown
   strictScalars: true
-  withHooks: false
 generates:
   src/generated/client.ts:
     plugins:
