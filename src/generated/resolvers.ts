@@ -17,7 +17,17 @@ export type Scalars = {
 
 export type Example = {
   __typename?: 'Example';
-  hello?: Maybe<Scalars['String']>;
+  hello: Scalars['String'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  updateExample: Example;
+};
+
+
+export type MutationUpdateExampleArgs = {
+  id: Scalars['Int'];
 };
 
 export type Query = {
@@ -101,8 +111,9 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Example: ResolverTypeWrapper<Example>;
   String: ResolverTypeWrapper<Scalars['String']>;
-  Query: ResolverTypeWrapper<{}>;
+  Mutation: ResolverTypeWrapper<{}>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
+  Query: ResolverTypeWrapper<{}>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 };
 
@@ -110,14 +121,19 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Example: Example;
   String: Scalars['String'];
-  Query: {};
+  Mutation: {};
   Int: Scalars['Int'];
+  Query: {};
   Boolean: Scalars['Boolean'];
 };
 
 export type ExampleResolvers<ContextType = any, ParentType extends ResolversParentTypes['Example'] = ResolversParentTypes['Example']> = {
-  hello?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  hello?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  updateExample?: Resolver<ResolversTypes['Example'], ParentType, ContextType, RequireFields<MutationUpdateExampleArgs, 'id'>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
@@ -126,10 +142,11 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type Resolvers<ContextType = any> = {
   Example?: ExampleResolvers<ContextType>;
+  Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 };
 
 
 
   import gql from 'graphql-tag';
-  export const typeDefs = gql`schema{query:Query}type Example{hello:String}type Query{hero(id:Int!):Example!}`;
+  export const typeDefs = gql`schema{query:Query mutation:Mutation}type Example{hello:String!}type Mutation{updateExample(id:Int!):Example!}type Query{hero(id:Int!):Example!}`;

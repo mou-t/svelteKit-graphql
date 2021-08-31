@@ -1,7 +1,11 @@
 type Example {
-	hello: String
+	hello: String!
 }
 
 type Query {
 	hero(id: Int!): Example!
+}
+
+type Mutation {
+	updateExample(id: Int!): Example!
 }

@@ -3,3 +3,9 @@ query ex($id: Int!) {
 		hello
 	}
 }
+
+mutation updateExample($id: Int!) {
+	updateExample(id: $id) {
+		hello
+	}
+}

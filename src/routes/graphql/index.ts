@@ -15,6 +15,7 @@ const schema = makeExecutableSchema({
 });
 
 const handler: RequestHandler<unknown, unknown, any> = async ({ method, headers, body, query }) => {
+	console.log(body);
 	const request = {
 		body,
 		headers,
